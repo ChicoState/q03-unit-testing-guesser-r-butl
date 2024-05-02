@@ -22,9 +22,14 @@ private:
     the secret; in other words, if m_secret has a 10 characters and the guess
     has 100, the distance is 10.
   */
-  unsigned int distance(string guess);
 
-public:
+   unsigned int distance(string guess);
+
+ public:
+ 
+  // Method for calling the private function "distance"
+  unsigned int call_distance(string guess);
+
   /*
     Constructor requires that the secret phrase is provided its value as
     an argument. This secret will not change for the lifespan of an instance
