@@ -18,7 +18,7 @@ class GuesserTest : public ::testing::Test
 
 TEST(GuesserTest, secret_over_32){
 	Guesser guesser("qqqqqwwwwweeeeerrrrrtttttyyyyyuuuuu");
-	int length = guesser.call_distance("qqqqqwwwwweeeeerrrrrtttttyyyyyuu");
+	int length = guesser.distance("qqqqqwwwwweeeeerrrrrtttttyyyyyuu");
 
 	ASSERT_EQ( 0, length);
 }
@@ -26,7 +26,7 @@ TEST(GuesserTest, secret_over_32){
 TEST(GuesserTest, equal_length_same_string)
 {
 	Guesser guesser("string");
-	int length = guesser.call_distance("string");
+	int length = guesser.distance("string");
 
 	ASSERT_EQ( 0, length);
 }
@@ -34,7 +34,7 @@ TEST(GuesserTest, equal_length_same_string)
 TEST(GuesserTest, empty_secret)
 {
 	Guesser guesser("");
-	int length = guesser.call_distance("string");
+	int length = guesser.distance("string");
 
 	ASSERT_EQ( 0, length);
 }
@@ -42,7 +42,7 @@ TEST(GuesserTest, empty_secret)
 TEST(GuesserTest, empty_guess)
 {
 	Guesser guesser("string");
-	int length = guesser.call_distance("");
+	int length = guesser.distance("");
 
 	ASSERT_EQ( 6, length);
 }
@@ -50,7 +50,7 @@ TEST(GuesserTest, empty_guess)
 TEST(GuesserTest, equal_length_different_string)
 {
 	Guesser guesser("string");
-	int distance = guesser.call_distance("secret");
+	int distance = guesser.distance("secret");
 
 	ASSERT_EQ( 5 , distance);
 }
@@ -58,7 +58,7 @@ TEST(GuesserTest, equal_length_different_string)
 TEST(GuesserTest, longer_guess_correct_string)
 {
 	Guesser guesser("string");
-	int distance = guesser.call_distance("stringkkd");
+	int distance = guesser.distance("stringkkd");
 
 	ASSERT_EQ( 3 , distance);
 }
@@ -66,7 +66,7 @@ TEST(GuesserTest, longer_guess_correct_string)
 TEST(GuesserTest, longer_secret_correct_string)
 {
 	Guesser guesser("stringlkj");
-	int distance = guesser.call_distance("string");
+	int distance = guesser.distance("string");
 
 	ASSERT_EQ( 3 , distance);
 }
@@ -74,7 +74,7 @@ TEST(GuesserTest, longer_secret_correct_string)
 TEST(GuesserTest, longer_guess_correct_string_passed_secret_length)
 {
 	Guesser guesser("string");
-	int distance = guesser.call_distance("stringstringlkjs");
+	int distance = guesser.distance("stringstringlkjs");
 
 	ASSERT_EQ( 6, distance);
 }

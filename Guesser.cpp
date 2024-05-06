@@ -50,10 +50,6 @@ unsigned int Guesser::distance(string guess){
   return change_count > secret.length() ? secret.length() : change_count;
 }
 
-unsigned int Guesser::call_distance(string guess){
-  return distance(guess);
-}
-
 /*
   Constructor requires that the secret phrase is provided its value as
   an argument. This secret will not change for the lifespan of an instance

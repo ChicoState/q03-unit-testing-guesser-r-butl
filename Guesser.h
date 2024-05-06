@@ -2,6 +2,7 @@
 #define GUESSER_H
 
 #include <string>
+#include <gtest/gtest.h>
 
 using std::string;
 
@@ -23,13 +24,20 @@ private:
     has 100, the distance is 10.
   */
 
-   unsigned int distance(string guess);
+   unsigned int distance(string guess); 
+   
+   public:
 
- public:
+    FRIEND_TEST(GuesserTest, secret_over_32);
+    FRIEND_TEST(GuesserTest, equal_length_same_string);
+    FRIEND_TEST(GuesserTest, empty_secret);
+    FRIEND_TEST(GuesserTest, empty_guess);
+    FRIEND_TEST(GuesserTest, equal_length_different_string);
+    FRIEND_TEST(GuesserTest, longer_guess_correct_string);
+    FRIEND_TEST(GuesserTest, longer_secret_correct_string);
+    FRIEND_TEST(GuesserTest, longer_guess_correct_string_passed_secret_length);
+
  
-  // Method for calling the private function "distance"
-  unsigned int call_distance(string guess);
-
   /*
     Constructor requires that the secret phrase is provided its value as
     an argument. This secret will not change for the lifespan of an instance
